@@ -6,7 +6,10 @@ export class Navbar extends Component {
   render() {
     return (
       <div className='navbar'>
-        
+        <div>
+          <img src={logo} alt='logo' />
+          <p>SHOPPER</p>
+        </div>
         
       </div>
     )
