@@ -42,9 +42,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
         image_url:`http://localhost:${port}/images/${req.file.filename}`
     })
 });
-
 //Schema for Creating Products
-
 const Product =mongoose.model("product",{
     id:{
         type:Number,
@@ -97,7 +95,6 @@ app.post('/addproduct',async(req,res)=>{
         category:req.body.category,
         new_price:req.body.new_price,
         old_price:req.body.old_price,
-
     });
     console.log(product);
     await product.save();
@@ -108,14 +105,12 @@ app.post('/addproduct',async(req,res)=>{
     });
 });
 // Creating API for deleting Products
-
 app.post('/removeproduct',async(req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
     console.log("removed");
     res.json({
         sucess:true,
         name:req.body.name,
-
     })
 });
 //Creating API for getting all products
@@ -124,6 +119,82 @@ app.get('/allproducts',async(req,res)=>{
     console.log("all products fetched");
     res.send(products);
 });
+
+//Schema creating for User model
+
+const Users =mongoose.model('users',{
+    name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        unique:true,
+    },
+    password:{
+       type:String, 
+    },
+    cartData:{
+        type:Object,
+    },
+    date:{
+        type:Date,
+        default:Date.now,
+    }
+});
+
+//Creating Endpoint for registering the user
+app.post('/signup',async(req,res)=>{
+
+    let check = await Users.findOne({email:req.body.email});
+    if(check){
+        return res.status(400).json({sucess:false,error:"existing user found with same email id"})
+    }
+    let cart ={};
+     
+    for (let i =0;i< 300; i++) {
+        cart[i]=0;
+    }
+    const user = new Users({
+        name:req.body.username,
+        email:req.body.email,
+        password:req.body.password,
+        cartData:cart,
+    })
+
+    await user.save();
+
+    const data ={
+        user:{
+            id:user.id
+        }
+    }
+
+    const token = jwt.sign(data,"secret_ecom");
+    res.json({sucess:true,token})
+
+});
+// Creating endpoint for user login
+app.post('/login',async(req,res)=>{
+    let user = await Users.findOne({email:req.body.email});
+    if(user){
+        const passCompare = req.body.password ===user.password;
+        if(passCompare){
+            const data ={
+                user:{
+                    id:user.id
+                }
+            }
+            const token = jwt.sign(data,'secret_ecom');
+            res.json({sucess:true,token});
+        }
+        else{
+            res.json({sucess:false,errors:"Wrong Password"});
+        }
+    }
+    else{
+        res.json({sucess:false,errors:"Wrong Email Id"})
+    }
+})
 
 
 app.listen(port,(error)=>{
