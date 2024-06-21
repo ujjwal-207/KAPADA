@@ -188,11 +188,11 @@ app.post('/login',async(req,res)=>{
             res.json({sucess:true,token});
         }
         else{
-            res.json({sucess:false,errors:"Wrong Password"});
+            res.json({sucess:false,error:"Wrong Password"});
         }
     }
     else{
-        res.json({sucess:false,errors:"Wrong Email Id"})
+        res.json({sucess:false,error:"Wrong Email Id"})
     }
 })
 
