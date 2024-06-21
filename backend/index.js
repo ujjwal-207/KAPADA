@@ -194,6 +194,13 @@ app.post('/login',async(req,res)=>{
     else{
         res.json({sucess:false,error:"Wrong Email Id"})
     }
+});
+// creating endpoint for newcollection data
+app.get('/newcollections',async(req,res)=>{
+    let products = await Product.find({});
+    let newcollection = products.slice(1).slice(-8);
+    console.log("new collection fetched");
+    res.send(newcollection);
 })
 
 
