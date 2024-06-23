@@ -25,8 +25,11 @@
         padding:15px 30px;
 
     }
-    .nav-logo{
-        width: 150px;
+    .nav-logo img{
+        width: 40px;
+    }
+    .nav-logo p{
+        font-size: 25px;
 
     }
     .nav-profile{
