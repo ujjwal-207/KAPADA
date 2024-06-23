@@ -8,7 +8,14 @@
     background: white;
 }
 .nav-logo{
-    width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo p{
+    color:black;
+    font-size: 38px;
+    font-weight: 600;
 }
 .nav-profile{
     width: 75px;
