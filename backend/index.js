@@ -98,7 +98,7 @@ app.post('/addproduct',async(req,res)=>{
         new_price:req.body.new_price,
         old_price:req.body.old_price,
     });
-    console.log(product);
+    
     await product.save();
     console.log("saved");
     res.json({
@@ -109,7 +109,7 @@ app.post('/addproduct',async(req,res)=>{
 // Creating API for deleting Products
 app.post('/removeproduct',async(req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
-    console.log("removed");
+    
     res.json({
         sucess:true,
         name:req.body.name,
