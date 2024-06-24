@@ -13,6 +13,8 @@ const port = process.env.PORT ||5000;
 
 app.use(express.json());
 app.use(cors());
+import { config } from "../admin/public/constant";
+const URL =config.url;
 
 //Database Connection With  MongoDB
 
@@ -41,7 +43,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
     
     res.json({
         sucess:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
+        image_url:`${URL}/images/${req.file.filename}`
     })
 });
 //Schema for Creating Products
