@@ -3,12 +3,12 @@ import './newcollection.css'
 
 import Item from '../item/item'
 import { config } from '../../../public/constant'
-const URL = config.url;
+const URLS = config.url;
 const Newcollection = () => {
   const[new_collection,setNew_collection] =useState([]);
 
   useEffect(()=>{
-    fetch(`${URL}/newcollections`)
+    fetch(`${URLS}/newcollections`)
     .then((response)=>response.json())
     .then((data)=>setNew_collection(data));
   },[])

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './popular.css'
 import { config } from '../../../public/constant'
-const URL = config.url;
+const URLS = config.url;
 import Item from '../item/item'
 const Popular = () => {
 
@@ -9,7 +9,7 @@ const Popular = () => {
 
 
   useEffect(()=>{
-    fetch(`${URL}/popularinwomen`)
+    fetch(`${URLS}/popularinwomen`)
     .then((response)=>response.json())
     .then((data)=>setPopularProducts(data));
   },[])

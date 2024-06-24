@@ -3,7 +3,7 @@ import './addproduct.css'
 import upload_area from '../../assets/upload_area.svg'
 import { useState } from 'react'
 import { config } from '../../../public/constant'
-const URL = config.url;
+const URLS = config.url;
 const Addproduct = () => {
   const[image,setImage] =useState(false);
   const[productDetails,setProductDetails] =useState({
@@ -29,7 +29,7 @@ const Addproduct = () => {
       let formData= new FormData();
       formData.append('product',image);
 
-      await fetch(`${URL}/upload`,{
+      await fetch(`${URLS}/upload`,{
         method:'post',
         headers:{
           Accept:'application/json',
@@ -40,7 +40,7 @@ const Addproduct = () => {
       if(responseData.sucess){
         product.image = responseData.image_url;
         console.log(product);
-        await fetch(`${URL}/addproduct`,{
+        await fetch(`${URLS}/addproduct`,{
           method:'Post',
           headers:{
             Accept:'application/json',
