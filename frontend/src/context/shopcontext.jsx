@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from "react";
-
+import { config } from "../../public/constant";
+const URL = config.url;
 
 export const ShopContext = createContext(null);
 const getDefaultCart =()=>{
@@ -16,12 +17,12 @@ const ShopContextProvider =(props) => {
     const [cartItems, setCartItems]=useState(getDefaultCart());
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allproducts').
+        fetch(`${URL}/allproducts`).
         then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/getcart',{
+            fetch(`${URL}/getcart`,{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -38,7 +39,7 @@ const ShopContextProvider =(props) => {
     const addToCart =(itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/addtocart',{
+            fetch(`${URL}/addtocart`,{
                 method:'POST',
                 headers:{
                     Accept:"appplication/form-data",
@@ -54,7 +55,7 @@ const ShopContextProvider =(props) => {
     const removeFromCart =(itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
         if(localStorage.getItem('auth-token')){
-            fetch('http://localhost:5000/removefrom',{
+            fetch(`${URL}/removefrom`,{
                 method:'POST',
                 headers:{
                     Accept:"appplication/form-data",

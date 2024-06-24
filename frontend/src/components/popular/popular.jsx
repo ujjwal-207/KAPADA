@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './popular.css'
-
+import { config } from '../../../public/constant'
+const URL = config.url;
 import Item from '../item/item'
 const Popular = () => {
 
@@ -8,7 +9,7 @@ const Popular = () => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:5000/popularinwomen')
+    fetch(`${URL}/popularinwomen`)
     .then((response)=>response.json())
     .then((data)=>setPopularProducts(data));
   },[])
