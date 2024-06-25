@@ -50,7 +50,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
     const protocol =  req.protocol;
     const host = req.get('host');
     res.json({
-        success:1,
+        sucess:1,
         image_url:`${protocol}://${host}/images/${req.file.filename}`
     })
 });
