@@ -22,30 +22,32 @@ mongoose.connect("mongodb+srv://ujjwalnepal2060:notebook7070@cluster0.xqpy5bo.mo
 
 app.get("/",(req,res)=>{
     res.send("Express App is Running")
-})
+});
+const fs = require('fs');
+const uploadDir =path.join(__dirname,'upload/images');
+if(!fs.existsSync(uploadDir)){
+    fs.mkdirSync(uploadDir, {recursive:true});
+}
 
 //Image Storage Engine
 
 const storage=multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'upload/images');
+        cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); 
     }
-    // destination: './upload/images',
-    // filename:(req,file,cb)=>{
-    //     return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-    // }
+   
 });
 
 const upload=multer({storage:storage});
 
 //Creating upload Endpoint for images
-app.use('/images',express.static('upload/images'))
+app.use('/images',express.static(uploadDir));
 
 app.post("/upload",upload.single('product'),(req,res)=>{
-    const protocol = req.headers['x-forwarded-photo'] || req.protocol;
+    const protocol =  req.protocol;
     const host = req.get('host');
     res.json({
         success:1,
