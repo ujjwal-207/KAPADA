@@ -31,7 +31,7 @@ const storage=multer.diskStorage({
         cb(null, 'upload/images');
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Append the original extension
+        cb(null, Date.now() + path.extname(file.originalname)); 
     }
     // destination: './upload/images',
     // filename:(req,file,cb)=>{
@@ -45,11 +45,11 @@ const upload=multer({storage:storage});
 app.use('/images',express.static('upload/images'))
 
 app.post("/upload",upload.single('product'),(req,res)=>{
-    const protocol = req.protocol;
+    const protocols = req.protocol;
     const host = req.get('host');
     res.json({
         sucess:1,
-        image_url:`${protocol}://${host}/images/${req.file.filename}`
+        image_url:`${protocols}://${host}/images/${req.file.filename}`
     })
 });
 //Schema for Creating Products
