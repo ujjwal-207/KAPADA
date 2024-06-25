@@ -21,7 +21,7 @@ const LoginSignup = () => {
     console.log("login",formData);
     console.log("signup",formData);
     let responseData;
-    await fetch(`${URLS}/login`,{
+    await fetch('https://kapada-backend.onrender.com/login',{
       method:'POST',
       headers:{
         Accept:'application/form-data',
@@ -42,7 +42,7 @@ const LoginSignup = () => {
   const sign_up =async()=>{
     console.log("signup",formData);
     let responseData;
-    await fetch(`${URLS}/signup`,{
+    await fetch('https://kapada-backend.onrender.com/signup',{
       method:'POST',
       headers:{
         Accept:'application/form-data',

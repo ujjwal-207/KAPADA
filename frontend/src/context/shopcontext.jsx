@@ -1,6 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
-import { config } from "../../public/constant";
-const URLS = config.url;
+
 
 export const ShopContext = createContext(null);
 const getDefaultCart =()=>{
@@ -17,12 +16,12 @@ const ShopContextProvider =(props) => {
     const [cartItems, setCartItems]=useState(getDefaultCart());
 
     useEffect(()=>{
-        fetch(`${URLS}/allproducts`).
+        fetch('https://kapada-backend.onrender.com/allproducts').
         then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch(`${URLS}/getcart`,{
+            fetch('https://kapada-backend.onrender.com/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -39,7 +38,7 @@ const ShopContextProvider =(props) => {
     const addToCart =(itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
         if(localStorage.getItem('auth-token')){
-            fetch(`${URLS}/addtocart`,{
+            fetch('https://kapada-backend.onrender.com/addtocart',{
                 method:'POST',
                 headers:{
                     Accept:"appplication/form-data",
@@ -55,7 +54,7 @@ const ShopContextProvider =(props) => {
     const removeFromCart =(itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
         if(localStorage.getItem('auth-token')){
-            fetch(`${URLS}/removefrom`,{
+            fetch('https://kapada-backend.onrender.com/removefrom',{
                 method:'POST',
                 headers:{
                     Accept:"appplication/form-data",
