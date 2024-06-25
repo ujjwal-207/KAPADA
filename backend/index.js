@@ -48,7 +48,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
     const protocol = req.protocol;
     const host = req.get('host');
     res.json({
-        success:1,
+        sucess:1,
         image_url:`${protocol}://${host}/images/${req.file.filename}`
     })
 });
@@ -119,7 +119,7 @@ app.post('/removeproduct',async(req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
     
     res.json({
-        success:true,
+        sucess:true,
         name:req.body.name,
     })
 });
