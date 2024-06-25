@@ -49,7 +49,7 @@ app.post("/upload",upload.single('product'),(req,res)=>{
     const host = req.get('host');
     res.json({
         sucess:1,
-        image_url:`${protocols}://${host}/images/${req.file.filename}`
+        image_url:`https://${host}/images/${req.file.filename}`
     })
 });
 //Schema for Creating Products
