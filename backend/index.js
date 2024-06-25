@@ -47,7 +47,7 @@ const upload=multer({storage:storage});
 app.use('/images',express.static(uploadDir));
 
 app.post("/upload",upload.single('product'),(req,res)=>{
-    const protocol =  req.protocol;
+    const protocol =  process.env.PROTOCOL ||req.protocol;
     const host = req.get('host');
     res.json({
         sucess:1,
