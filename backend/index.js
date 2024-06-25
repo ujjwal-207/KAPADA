@@ -45,11 +45,11 @@ const upload=multer({storage:storage});
 app.use('/images',express.static('upload/images'))
 
 app.post("/upload",upload.single('product'),(req,res)=>{
-    const protocols = req.protocol;
+    const protocol = req.protocol;
     const host = req.get('host');
     res.json({
         sucess:1,
-        image_url:`https://${host}/images/${req.file.filename}`
+        image_url:`${protocol}://${host}/images/${req.file.filename}`
     })
 });
 //Schema for Creating Products
