@@ -45,7 +45,7 @@ const upload=multer({storage:storage});
 app.use('/images',express.static('upload/images'))
 
 app.post("/upload",upload.single('product'),(req,res)=>{
-    const protocol = req.protocol['x-forwarded-photo'] || req.protocol;
+    const protocol = req.protocol;
     const host = req.get('host');
     res.json({
         success:1,
