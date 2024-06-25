@@ -26,6 +26,10 @@
     display: flex;
     align-items: center;
     gap:20px;
+    
+}
+.hero-hand-icon img{
+    width: 400px;
 }
 .hero-latest-btn{
     display: flex;
@@ -36,7 +40,7 @@
     height: 70px;
     border-radius: 75px;
     margin-top: 30px;
-    background-color: #ff4141;
+    background-color:purple;
     color: white;
     font-size: 22px;
     font-weight: 500;
@@ -58,7 +62,7 @@
         font-size: 60px;
     }
     .hero-hand-icon img{
-        width: 80px;
+        width: 90px;
     }
     .hero-latest-btn{
         gap: 10px;
@@ -82,7 +86,7 @@
         font-size: 50px;
     }
     .hero-hand-icon img{
-        width: 65px;
+        width: 90px;
     }
     .hero-latest-btn{
         width: 220px;
@@ -104,7 +108,7 @@
         font-size: 40px;
     }
     .hero-hand-icon img{
-        width: 50px;
+        width: 60px;
     }
     .hero-latest-btn{
         width: 175px;
@@ -126,7 +130,7 @@
         font-size: 50px;
     }
     .hero-hand-icon img{
-        width: 55px;
+        width: 70px;
     }
     .hero-latest-btn{
         width: 200px;

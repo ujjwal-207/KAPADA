@@ -43,6 +43,9 @@
     justify-content: flex-end;
     padding-top: 50px;
 }
+.offers-right img{
+    width: 500px;
+}
 @media(max-width:1280px){
     .offers{
         padding: 0px 80px;

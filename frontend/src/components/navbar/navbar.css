@@ -46,12 +46,12 @@
     outline: none;
     border: 1px solid #7a7a7a;
     border-radius: 75px;
-    color:#515151;
+    color:whitesmoke;
     width: 157px;
     height: 58px;
     font-size:20px ;
     font-weight: 500;
-    background: white;
+    background: rgb(4, 65, 88);
     cursor: pointer;
 }
 .nav-login-cart button:active{
