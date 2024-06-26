@@ -24,7 +24,7 @@ app.get("/",(req,res)=>{
     res.send("Express App is Running")
 });
 const fs = require('fs');
-const uploadDir =path.join(__dirname,'upload/images');
+const uploadDir =path.join(__dirname,'./upload/images');
 if(!fs.existsSync(uploadDir)){
     fs.mkdirSync(uploadDir, {recursive:true});
 }
