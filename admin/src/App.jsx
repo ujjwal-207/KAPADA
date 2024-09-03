@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-import Admin from './Pages/Admin/admin'
-import Navbar from './components/navbar/navbar'
+import Admin from "./Pages/Admin/admin";
+import Navbar from "./components/navbar/navbar";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Navbar />
       <Admin />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
